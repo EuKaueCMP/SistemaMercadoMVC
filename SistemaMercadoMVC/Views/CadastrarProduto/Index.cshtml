@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>Sistema mercado | Cadastrar Produtos</title>
+            <script src="./js/site.js"></script>
+            <link rel="stylesheet" href="./css/site.css" />
+        </head>
+        <body>
+            <h1>Cadastrar Produtos</h1>
+            <form asp-action="CadastrarProduto" asp-controller="CadastrarProduto" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do produto" />
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descricao</label>
+                    <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descricao do produto" />
+                </div>
+                <div class="form-group">
+                    <label for="imagem">Imagem</label>
+                    <input type="file" class="form-control" id="imagem" name="imagem" placeholder="Digite o caminho da imagem do produto" />
+                </div>
+                <div class="form-group">
+                    <label for="preco">Preço</label>
+                    <input type="number" class="form-control" id="preco" name="preco" placeholder="Digite o preço do produto" />
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+                 @*Exibir somente se houver algum erro*@
+            <p class="erro-login @(ViewBag.Erro  != null ? "mostra" : "")">
+                @* Para usar c# no html *@
+                @ViewBag.Erro
+            </p>
+            </form>
+        </body>
+    </html>

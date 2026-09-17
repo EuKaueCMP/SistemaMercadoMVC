@@ -1,0 +1,24 @@
+CREATE DATABASE SistemaMercadoDb
+GO
+
+USE SistemaMercadoDb
+GO
+
+CREATE TABLE Usuario(
+	UsuarioId INT IDENTITY PRIMARY KEY,
+	Nome VARCHAR(50) NOT NULL,
+	Email VARCHAR(255) UNIQUE NOT NULL,
+	Senha VARBINARY(32)
+)
+GO
+
+CREATE TABLE Produto(
+	ProdutoId INT IDENTITY PRIMARY KEY,
+	NomeProduto VARCHAR(255) NOT NULL,
+	Preco INT NOT NULL,
+	Descricao NVARCHAR(MAX) NOT NULL,
+	UsuarioId INT,
+
+	CONSTRAINT FK_Produto_Usuario_UsuarioId FOREIGN KEY (UsuarioId) REFERENCES Usuario(UsuarioId)
+)
+GO
