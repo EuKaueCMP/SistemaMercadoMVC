@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SistemaMercadoMVC.Models.Produto>
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema produtos | Produtos</title>
+    <script src="./js/site.js"></script>
+    <link rel="stylesheet" href="./css/site.css" />
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID:</th>
+                <th>Nome:</th>
+                <th>Preço:</th>
+                <th>Descrição</th>
+                <th>Foto:</th>
+            </tr>
+          @*   <tbody>
+                @foreach (var produto in Model)
+            </tbody> *@
+        </thead>
+    </table>
+</body>
+</html>

@@ -1,34 +1,33 @@
-﻿!<DOCTYPE>
-    <html>
-        <head>
-            <meta charset="utf-8" />
-            <title>Sistema mercado | Cadastro</title>
-            <script src="./js/site.js"></script>
-            <link rel="stylesheet" href="./css/site.css" />
-        </head>
-        <body>
-            <h1>Cadastro</h1>
-            <form asp-action="Cadastro" asp-controller="Cadastro" method="post">
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" />
-                </div>
-                <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" />
-                </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-
-                 @*Exibir somente se houver algum erro*@
-            <p class="erro-login @(ViewBag.Erro  != null ? "mostra" : "")">
-                @* Para usar c# no html *@
-                @ViewBag.Erro
-            </p>
-            </form>
-        </body>
-    </html>
-</DOCTYPE>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema mercado | Cadastro</title>
+    <script src="./js/site.js"></script>
+    <link rel="stylesheet" href="./css/site.css" />
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <form asp-action="Cadastro" asp-controller="Cadastro" method="post">
+        <div class="mb-3">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" />
+        </div>
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" />
+        </div>
+        <div class="mb-3">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" />
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="/Login/Index" btn btn-primary>Já possui uma conta? Login</a>
+        @*Exibir somente se houver algum erro*@
+        <p class="erro-login @(ViewBag.Erro != null ? "mostra" : "")">
+            @* Para usar c# no html *@
+            @ViewBag.Erro
+        </p>
+    </form>
+</body>
+</html>

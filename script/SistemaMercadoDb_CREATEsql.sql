@@ -17,8 +17,18 @@ CREATE TABLE Produto(
 	NomeProduto VARCHAR(255) NOT NULL,
 	Preco INT NOT NULL,
 	Descricao NVARCHAR(MAX) NOT NULL,
+	Imagem VARBINARY(MAX) NOT NULL,
 	UsuarioId INT,
 
 	CONSTRAINT FK_Produto_Usuario_UsuarioId FOREIGN KEY (UsuarioId) REFERENCES Usuario(UsuarioId)
 )
 GO
+
+--ALTER TABLE Produto
+--ALTER COLUMN Preco DECIMAL(9)
+
+-- Adicionando Imagem ao produto
+--ALTER TABLE Produto
+--ADD Imagem VARBINARY(MAX)
+
+SELECT * FROM Produto

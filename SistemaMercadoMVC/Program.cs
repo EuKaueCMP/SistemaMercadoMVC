@@ -5,9 +5,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 //
 //
-// Precisa configurar a CONNECTION STRING
+// Codigo adicionado para configurar a CONNECTION STRING
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//
+//
+// Codigo adicionado para configurar as Sessions
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(option =>
+{
+    option.IdleTimeout = TimeSpan.FromMinutes(30);
+    option.Cookie.HttpOnly = true;
+    option.Cookie.IsEssential = true;
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -21,6 +32,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSession();
 
 app.UseHttpsRedirection();
 app.UseRouting();

@@ -25,7 +25,7 @@ namespace SistemaMercadoMVC.Controllers
                 ViewBag.Error = "Email ou senha inválidos!";
                 return View("Index");
             }
-            ;
+            
 
             Usuario usuario = ctx.Usuario.FirstOrDefault(u => u.Email == email);
             if (usuario == null)
@@ -33,7 +33,7 @@ namespace SistemaMercadoMVC.Controllers
                 ViewBag.Error = "Email ou senha inválidos";
                 return View("Index");
             }
-            ;
+            
 
             var senhaDigitadaHash = HashService.Hash(senha);
             if (!usuario.Senha.SequenceEqual(senhaDigitadaHash))
@@ -43,9 +43,11 @@ namespace SistemaMercadoMVC.Controllers
                 ViewBag.Error = "Email ou senha inválidos";
 
                 return View("Index");
-            };
+            }
 
-            Console.WriteLine("Chegou aqui");
+            HttpContext.Session.SetString("NomeUsuario", usuario.Nome);
+            HttpContext.Session.SetInt32("UsuarioId", usuario.UsuarioId);
+
             return RedirectToAction("Index", "Home");
         }
     }
